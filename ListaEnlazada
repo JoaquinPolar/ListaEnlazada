@@ -27,6 +27,7 @@ class LinkedList{
 		LinkedList(Node *n){
 			head=n;
 		}
+		~LinkedList();
 		// Verifica si el nodo existe usando key
 		Node* NodeExists(int k){
 			Node* temp=NULL;
@@ -152,6 +153,14 @@ class LinkedList{
 
 
 };
+LinkedList::~LinkedList(){
+	Node *aux;
+	while(head!=NULL){
+		aux=head->next;
+		delete[] head;
+		head=aux;
+	}
+}
 int main(){
 	LinkedList s;
 	int option;
@@ -164,7 +173,8 @@ int main(){
 		cout<<"4. EliminarNodoPorUnValorKey()"<<endl;
 		cout<<"5. ActualizarNodoPorUnValorKey()"<<endl;
 		cout<<"6. Imprimir()"<<endl;
-		cout<<"7. LimpiarPantalla()"<<endl;
+		cout<<"7. Borrar todo";
+		cout<<"8. LimpiarPantalla()"<<endl;
 
 		cin>>option;
 		Node* n1=new Node();
@@ -216,6 +226,8 @@ int main(){
 
 			break;
 		case 7:
+			s.~LinkedList();
+		case 8:
 			system("cls");
 			break;
 		default:
